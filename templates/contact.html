@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----------------------------- CSS ----------------------------->
+    <!-- <link rel="stylesheet" href="contact.css"> -->
+    <link href="static/css/contact.css" rel="stylesheet">
+
+    <!------------------------- Boxicons CSS ------------------------>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+     <!-- FontAwesome 5 -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+    <style>
+    .mainlogo {
+        position: fixed; 
+        top: 80px; 
+        left: 80px; 
+        /* z-index: 999;  */
+    }
+
+    .mainlogo img {
+        width: 300px; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+        
+    }
+    </style>
+    <title> CONTACT PAGE </title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <!-- <img src="smallphishtitanlogo.png" alt="logo"> -->
+                    <img src="{{ url_for('static', filename='img/smallphishtitanlogo.png') }}" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name"> PhishTitan </span>
+                    <span class="profession"> Software </span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" id="searchInput" placeholder="Search..." disabled>
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/index">
+                            <i class='bx bxs-home icon'></i>
+                            <span class="text nav-text"> Home Page </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/profile">
+                            <i class='bx bxs-user icon' ></i>
+                            <span class="text nav-text"> User Profile </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/dashboard">
+                            <i class='bx bxs-dashboard icon'></i>
+                            <span class="text nav-text"> Dashboard </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/publishfeedback">
+                            <i class='bx bx-list-ul icon'></i>
+                            <span class="text nav-text"> Publish Feedback </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/feedback">
+                            <i class='bx bxs-comment icon'></i>
+                            <span class="text nav-text"> Users Feedback </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/contact">
+                            <i class='bx bxs-phone icon' ></i>
+                            <span class="text nav-text"> Contact Us </span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#" onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text"> Logout </span>
+                    </a>
+
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon' ></i>
+                        <i class='bx bx-sun icon sun' ></i>
+                    </div>
+                    <span class="mode-text text"> Dark Mode </span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+    </nav>
+    <!-- End -->
+<section class="cont">
+    <div class="text"> Contact Us </div>
+
+    <div class="mainlogo">
+        <img src="{{ url_for('static', filename='img/smallphishtitanlogo.png') }}" alt="logo">
+
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-info">
+        <div class="card">
+          <i class="card-icon far fa-building"></i>
+          <p> Company Name </p>
+          <p>phishtitan***</p>
+        </div>
+  
+        <div class="card">
+          <i class="card-icon far fa-envelope"></i>
+          <p> Email Address </p>
+          <p>phishtitan***</p>
+        </div>
+  
+        <div class="card">
+          <i class="card-icon fas fa-phone"></i>
+          <p> Contact Number </p>
+          <p>+91 9278***</p>
+        </div>
+        <div class="card">
+          <i class="card-icon fas fa-user"></i>
+          <p> Facebook </p>
+          <p>phishtitan***</p>
+        </div>
+        <div class="card">
+          <i class="card-icon fas fa-fire"></i>
+          <p> Instagram </p>
+          <p>phishtitan***</p>
+        </div>
+      </div>
+  
+
+    <script src="static/js/script.js"></script>
+    <script>
+        function logout() {
+            // Create a new form element
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/logout'; // Specify the logout route in Flask
+        
+            // Create a hidden input field to mimic the behavior of a form submission
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'logout'; // Specify the name of the POST parameter
+            input.value = 'true'; // Specify the value of the POST parameter
+            form.appendChild(input);
+        
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+        </script>
+
+
+<script>
+    // Array of placeholder texts
+    var placeholders = ["Awareness", "Caution", "Security", "Vigilance", "Diligence"];
+    
+    // Function to rotate through placeholders
+    function rotatePlaceholders() {
+        var index = 0;
+        return function() {
+            document.getElementById("searchInput").setAttribute("placeholder", placeholders[index]);
+            index = (index + 1) % placeholders.length;
+        };
+    }
+    
+    // Rotate placeholders every 3 seconds
+    setInterval(rotatePlaceholders(), 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles.css">
+    <link href="static/css/styles.css" rel="stylesheet">
+    <title>signin-signup</title>
+</head>
+<body>
+    <div class="container">
+        <div class="signin-signup">
+
+            <form action="/login" method="POST" class="sign-in-form">
+                <h2 class="title">Sign in</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" name="username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password">
+                </div>
+                <input type="submit" value="Login" class="btn">
+                <p class="social-text">Or Sign in with social platform</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <p class="account-text">Don't have an account?<a href="#" id="sign-up-btn2">Sign up</a></p>
+
+                <p class="message">Not registered? <a href="signup">Create an account</a></p>
+                {% if message %}
+                <p style="color: red;">{{ message }}</p>
+                {% endif %}
+                
+            </form>
+            
+
+            <form action="/signup" method="POST" class="sign-up-form">
+                <h2 class="title"> Create Account </h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" name="username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" placeholder="Email" name="email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Name" name="name">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="integer" placeholder="Age" name="age">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password">
+                </div>
+                <input type="submit" value="Sign up" class="btn">
+                <p class="social-text">Or Sign in with social platform</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+
+                {% if message %}
+                <p style="color: red;">{{ message }}</p>
+                {% endif %}
+
+            </form>
+            
+
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Member of PhishTitan?</h3>
+                    <p> Check suspicious links with the PhishTitan URL scanner. Real-time results detect phishing links with accurate, deep machine learning analysis. </p>
+                    <button class="btn" id="sign-in-btn">Sign in</button>
+                </div>
+                <img src="{{ url_for('static', filename='img/phishtitanlogo.png') }}" alt="" class="image">
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3> New To PhishTitan? </h3>
+                    <p><b> TRY IT NOW! </b><br> Use this free URL scanner to prevent suspicious links, scams, or dangerous websites. </p>
+                    <button class="btn" id="sign-up-btn">Sign up</button>
+                </div>
+                <img src="{{ url_for('static', filename='img/phishtitanlogo.png') }}" alt="" class="image">
+            </div>
+        </div>
+    </div>
+    <script src="static/js/script1.js"></script>
+</body>
+</html>

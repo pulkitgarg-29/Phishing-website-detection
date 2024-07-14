@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!---------------------------- CSS ----------------------------->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+    <link href="static/css/style.css" rel="stylesheet">
+
+
+    <!------------------------ Boxicons CSS ------------------------>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-------------------------Iconscout CSS------------------------>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title> DASHBOARD </title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+        
+                    <img src="{{ url_for('static', filename='img/smallphishtitanlogo.png') }}" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name"> PhishTitan </span>
+                    <span class="profession"> Software </span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" id="searchInput" placeholder="Search..." disabled>
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/index">
+                            <i class='bx bxs-home icon'></i>
+                            <span class="text nav-text"> Home Page </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/profile">
+                            <i class='bx bxs-user icon' ></i>
+                            <span class="text nav-text"> User Profile </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/dashboard">
+                            <i class='bx bxs-dashboard icon'></i>
+                            <span class="text nav-text"> Dashboard </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/publishfeedback">
+                            <i class='bx bx-list-ul icon'></i>
+                            <span class="text nav-text"> Publish Feedback </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/feedback">
+                            <i class='bx bxs-comment icon'></i>
+                            <span class="text nav-text"> Users Feedback </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/contact">
+                            <i class='bx bxs-phone icon' ></i>
+                            <span class="text nav-text"> Contact Us </span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            
+            <div class="bottom-content">
+                <li class="">
+            
+                    <a href="#" onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text"> Logout </span>
+                    </a>
+
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text"> Dark Mode </span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="dash-content">
+            <div class="overview">
+                <div class="text"> Dashboard </div>
+                <div class="title">
+    
+                </div>
+
+                <div class="boxes">
+                    <div class="kotak kotak1">
+                        <i class="uil uil-exclamation-triangle"></i>
+                        <span class="text"> Top Phishing Websites </span>
+                        <span class="number"> {{phishing_count}} </span>         
+                    </div>
+                    <div class="kotak kotak2">
+                        <i class="uil uil-shield-check"></i>
+                        <span class="text"> Total Legitimate Websites </span>
+                        <span class="number"> {{legit_count}} </span>
+                    </div>
+                    <div class="kotak kotak3">
+                        <i class="uil uil-comments"></i>
+                        <span class="text"> User Comments </span>
+                        <span class="number"> {{comment_count}} </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text"> Recent Activity </span>
+                </div>
+
+
+                <!-- <div class="activity-data">
+                    <div class="data names">
+                        <span class="data-title"><b><u> SUBMITTED BY </u></b></span>
+                        <span class="data-list">Prem Shahi</span>
+                        <span class="data-list">Deepa Chand</span>
+                  
+                    </div>
+                    <div class="data email">
+                        <span class="data-title"><b><u> URL </u></b></span>
+                        <span class="data-list"> httpdz://www.y0utbe.com </span>
+                        <span class="data-list"> https://www.uniten.edu.my/student-hub/ </span>
+                
+                    </div>
+                    <div class="data joined">
+                        <span class="data-title"><b><u>SUBMITTED TIME </u></b></span>
+                        <span class="data-list">2022-02-12</span>
+                        <span class="data-list">2022-02-12</span>
+                    
+                    </div>
+                    <div class="data type">
+                        <span class="data-title"><b><u> PHISHING TYPE </u></b></span>
+                        <span class="data-list"> Spear Phishing </span>
+                       
+                    </div>
+                    <div class="BLOCKED STATUS">
+                        <span class="data-title"><b><u> TRUE </u></b> </span>
+                        <span class="data-list"> FALSE </span>
+                    </div>
+                </div> -->
+
+                <div class="activity-data">
+                    <div class="data names">
+                        <span class="data-title"><b><u> SUBMITTED BY </u></b></span>
+                        {% for url_info in latest_urls %}
+                        <span class="data-list">{{ url_info[0] }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="data email">
+                        <span class="data-title"><b><u> URL </u></b></span>
+                        {% for url_info in latest_urls %}
+                        <span class="data-list">{{ url_info[1] }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="data joined">
+                        <span class="data-title"><b><u>SUBMITTED TIME </u></b></span>
+                        {% for url_info in latest_urls %}
+                        <span class="data-list">{{ url_info[2] }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="data type">
+                        <span class="data-title"><b><u> URL TYPE </u></b></span>
+                        {% for url_info in latest_urls %}
+                        <span class="data-list">{{ url_info[3] }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="data status">
+                        <span class="data-title"><b><u> BLOCKED STATUS </u></b> </span>
+                        {% for url_info in latest_urls %}
+                        <span class="data-list">{{ 'TRUE' if url_info[4] == 1 else 'FALSE' }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </section>
+
+    <script src="static/js/script.js"></script>
+    <script>
+        function logout() {
+            // Create a new form element
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/logout'; // Specify the logout route in Flask
+        
+            // Create a hidden input field to mimic the behavior of a form submission
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'logout'; // Specify the name of the POST parameter
+            input.value = 'true'; // Specify the value of the POST parameter
+            form.appendChild(input);
+        
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+        </script>
+
+<script>
+    // Array of placeholder texts
+    var placeholders = ["Awareness", "Caution", "Security", "Vigilance", "Diligence"];
+    
+    // Function to rotate through placeholders
+    function rotatePlaceholders() {
+        var index = 0;
+        return function() {
+            document.getElementById("searchInput").setAttribute("placeholder", placeholders[index]);
+            index = (index + 1) % placeholders.length;
+        };
+    }
+    
+    // Rotate placeholders every 3 seconds
+    setInterval(rotatePlaceholders(), 3000);
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <title> HOME PAGE </title>
+
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+        
+                    <img src="{{ url_for('static', filename='img/smallphishtitanlogo.png') }}" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name"> PhishTitan </span>
+                    <span class="profession"> Software </span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" id="searchInput" placeholder="Search..." disabled>
+                </li>
+                
+                
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/index">
+                            <i class='bx bxs-home icon'></i>
+                            <span class="text nav-text"> Home Page </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/profile">
+                            <i class='bx bxs-user icon' ></i>
+                            <span class="text nav-text"> User Profile </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/dashboard">
+                            <i class='bx bxs-dashboard icon'></i>
+                            <span class="text nav-text"> Dashboard </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/publishfeedback">
+                            <i class='bx bx-list-ul icon'></i>
+                            <span class="text nav-text"> Publish Feedback </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/feedback">
+                            <i class='bx bxs-comment icon'></i>
+                            <span class="text nav-text"> Users Feedback </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/contact">
+                            <i class='bx bxs-phone icon' ></i>
+                            <span class="text nav-text"> Contact Us </span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            
+            <div class="bottom-content">
+                <li class="">
+            
+                    <a href="#" onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text"> Logout </span>
+                    </a>
+
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text"> Dark Mode </span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+
+            </div>
+        </div>
+    </nav>
+    
+     <section class="home">
+        <div class="mainlogo">
+            <img src="{{ url_for('static', filename='img/phishtitanlogo.png') }}" alt="logo">
+        </div>
+        <div class="centerbox">
+            <!-- <h1 class="heading" style="color: white;"><p>Analyse suspicious URLs to detect malware</p></h1> -->
+            <h3 style="color: white; margin-left: 100px;">{{ prediction_label }}</h3>
+            
+            {% if url %}
+                <a href="{{ url }}" target="_blank" style="margin-left: 200px;">
+                    <button class="button-url">Visit Website</button>
+                </a>
+            {% endif %}
+        </div>
+
+
+    </section>
+    
+    
+    
+    
+
+    <script src="static/js/script.js"></script>
+
+    <script>
+        
+        let x = '{{xx}}';
+        let num = x*100;
+        if (0<=x && x<0.50){
+            num = 100-num;
+        }
+        let txtx = num.toString();
+        if(x<=1 && x>=0.50){
+            var label = "Website is "+txtx +"% safe to use...";
+            document.getElementById("prediction").innerHTML = label;
+            document.getElementById("button1").style.display="block";
+        }
+        else if (0<=x && x<0.50){
+            var label = "Website is "+txtx +"% unsafe to use..."
+            document.getElementById("prediction").innerHTML = label ;
+            document.getElementById("button2").style.display="block";
+        }
+    
+</script>
+
+    <script>
+        function logout() {
+            // Create a new form element
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/logout'; // Specify the logout route in Flask
+        
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'logout'; // Specify the name of the POST parameter
+            input.value = 'true'; // Specify the value of the POST parameter
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+        </script>
+
+
+<script>
+    // Array of placeholder texts
+    var placeholders = ["Awareness", "Caution", "Security", "Vigilance", "Diligence"];
+    
+    // Function to rotate through placeholders
+    function rotatePlaceholders() {
+        var index = 0;
+        return function() {
+            document.getElementById("searchInput").setAttribute("placeholder", placeholders[index]);
+            index = (index + 1) % placeholders.length;
+        };
+    }
+    
+    // Rotate placeholders every 3 seconds
+    setInterval(rotatePlaceholders(), 3000);
+</script>
+
+
+</body>
+</html>

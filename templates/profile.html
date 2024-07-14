@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----------------------------- CSS ----------------------------->
+    <!-- <link rel="stylesheet" href="profile.css"> -->
+    <link href="static/css/profile.css" rel="stylesheet">
+
+    <!------------------------- Boxicons CSS ------------------------>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+     <!-- FontAwesome 5 -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+     <style>
+
+     .profile {
+        padding-top: 50px;
+        background-color: var(--primary-color-light);
+        height: calc(100vh - 20px); /* Adjust height based on your header/footer */
+    }
+
+    .profile .text {
+        font-size: 36px;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .main {
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .main .card {
+        background-color: #1b1b1a;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        padding: 20px;
+        width: 700px;
+        height: 400px;
+        /* text-align: center; */
+    }
+
+    .main .card table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .main .card table tr td {
+        padding: 10px 0;
+        color:rgb(164, 157, 157);
+        /* color: var(--text-color); Ensure text color in dark mode */
+        padding-left: 25px;
+    }
+/* 
+    .card table tr:nth-child(even) {
+    background-color: #2b2b29; 
+}
+
+.card table tr:nth-child(odd) {
+    background-color: #272724; 
+}  */
+
+.card table {
+    border-collapse: collapse; /* Remove spacing between table cells */
+}
+
+.card table tr td {
+    border: none; /* Remove border lines */
+    padding: 10px 0;
+    color: var(--text-color);
+}
+
+.card table tr:hover {
+    transform: scale(1.2);
+}
+
+
+
+    .edit {
+        color: var(--text-color);
+        font-size: 24px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .edit:hover {
+        transform: scale(1.2);
+    }
+
+    .mainlogo {
+        position: fixed; 
+        top: 80px; 
+        left: 80px; 
+        /* z-index: 999;  */
+    }
+
+    .mainlogo img {
+        width: 300px; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+        
+    }
+
+
+
+</style>
+
+</head>
+
+
+    <title> USER PROFILE </title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{{ url_for('static', filename='img/smallphishtitanlogo.png') }}" alt="logo">
+                    
+                </span>
+
+                <div class="text header-text">
+                    <span class="name"> PhishTitan </span>
+                    <span class="profession"> Software </span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" id="searchInput" placeholder="Search..." disabled>
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/index">
+                            <i class='bx bxs-home icon'></i>
+                            <span class="text nav-text"> Home Page </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/profile">
+                            <i class='bx bxs-user icon' ></i>
+                            <span class="text nav-text"> User Profile </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/dashboard">
+                            <i class='bx bxs-dashboard icon'></i>
+                            <span class="text nav-text"> Dashboard </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/publishfeedback">
+                            <i class='bx bx-list-ul icon'></i>
+                            <span class="text nav-text"> Publish Feedback </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/feedback">
+                            <i class='bx bxs-comment icon'></i>
+                            <span class="text nav-text"> Users Feedback </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/contact">
+                            <i class='bx bxs-phone icon' ></i>
+                            <span class="text nav-text"> Contact Us </span>
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+            
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#" onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text"> Logout </span>
+                    </a>
+
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon' ></i>
+                        <i class='bx bx-sun icon sun' ></i>
+                    </div>
+                    <span class="mode-text text"> Dark Mode </span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+    </nav>
+    <!-- End -->
+<!-- USER PROFILE -->
+<section class="profile">
+    <div class="text" style="margin-left: -700px; margin-top: -50px; position: absolute;">User Profile @{{rows[0][3]}}</div>
+    <div class="mainlogo">
+        <img src="{{ url_for('static', filename='img/smallphishtitanlogo.png') }}" alt="logo">
+
+    </div>
+    <div class="main">
+        <!-- User profile card -->
+        <div class="card" style="margin-top: 120px;">
+            <!-- <i class="fas fa-pen edit"></i> -->
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{rows[0][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>{{rows[0][2]}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Age</td>
+                        <td>:</td>
+                        <td>{{rows[0][1]}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Username</td>
+                        <td>:</td>
+                        <td>{{rows[0][3]}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total URLs Entered</td>
+                        <td>:</td>
+                        <td>{{x}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Phishing URLs</td>
+                        <td>:</td>
+                        <td>{{y}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Legitimate URLs</td>
+                        <td>:</td>
+                        <td>{{z}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!-- End of USER PROFILE section -->
+
+
+<script src="static/js/script.js"></script>
+
+<script>
+    function logout() {
+        // Create a new form element
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/logout'; // Specify the logout route in Flask
+    
+        // Create a hidden input field to mimic the behavior of a form submission
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'logout'; // Specify the name of the POST parameter
+        input.value = 'true'; // Specify the value of the POST parameter
+        form.appendChild(input);
+    
+        // Append the form to the document body and submit it
+        document.body.appendChild(form);
+        form.submit();
+    }
+    </script>
+
+<script>
+    // Array of placeholder texts
+    var placeholders = ["Awareness", "Caution", "Security", "Vigilance", "Diligence"];
+    
+    // Function to rotate through placeholders
+    function rotatePlaceholders() {
+        var index = 0;
+        return function() {
+            document.getElementById("searchInput").setAttribute("placeholder", placeholders[index]);
+            index = (index + 1) % placeholders.length;
+        };
+    }
+    
+    // Rotate placeholders every 3 seconds
+    setInterval(rotatePlaceholders(), 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        /* Navigation Styles */
+        /* .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: #fff;
+            padding-top: 60px; 
+        } */
+
+        /* Logo Styles */
+        .mainlogo {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* z-index: 999; */
+        }
+
+        /* Home Section Styles */
+        .home {
+            padding: 20px;
+            padding-left: 270px; /* Adjust based on your navigation width */
+        }
+
+        /* Boxes Styles */
+        .boxes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            margin-left: -1800px;
+        }
+
+        .kotak {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #383636;
+            border-radius: 10px;
+            padding: 10px;
+            width: 200px; /* Adjust the width here */
+            height: 100px; /* Adjust the height here */
+        }
+
+        .kotak1 {
+            background-color: #383636;
+        }
+
+        .kotak i {
+            /* font-size: 12px; */
+            margin-right: 10px;
+        }
+
+        .kotak .text {
+            /* font-size: 7px;  */
+            font-weight: bold;
+            
+        }
+
+        .kotak .number {
+            font-size: 14px; /* Adjust the font size */
+            font-weight: bold;
+            padding-left: 90px;
+        }
+
+        .kotak:hover {
+            transform: scale(1.2);
+        }
+    </style>
+
+
+
+
+
+    </style>
+
+    <title> HOME PAGE </title>
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+        
+                    <img src="{{ url_for('static', filename='img/smallphishtitanlogo.png') }}" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name"> PhishTitan </span>
+                    <span class="profession"> Software </span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" id="searchInput" placeholder="Search..." disabled>
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/index">
+                            <i class='bx bxs-home icon'></i>
+                            <span class="text nav-text"> Home Page </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/profile">
+                            <i class='bx bxs-user icon' ></i>
+                            <span class="text nav-text"> User Profile </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/dashboard">
+                            <i class='bx bxs-dashboard icon'></i>
+                            <span class="text nav-text"> Dashboard </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/publishfeedback">
+                            <i class='bx bx-list-ul icon'></i>
+                            <span class="text nav-text"> Publish Feedback </span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/feedback">
+                            <i class='bx bxs-comment icon'></i>
+                            <span class="text nav-text"> Users Feedback </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/contact">
+                            <i class='bx bxs-phone icon' ></i>
+                            <span class="text nav-text"> Contact Us </span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            
+            <div class="bottom-content">
+                <li class="">
+            
+                    <a href="#" onclick="logout()">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text"> Logout </span>
+                    </a>
+
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text"> Dark Mode </span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+
+            </div>
+        </div>
+    </nav>
+    
+    <section class="home">
+        <div class="text" style="margin-left: -280px;"> Hello {{user}}. Welcome to phishtitan!</div>
+
+<!-- Boxes Section -->
+<div class="boxes">
+    <div class="kotak kotak1">
+        <i class="uil uil-exclamation-triangle"></i>
+        <div>
+            <span class="text" style="font-size: 25px;">Total URLs</span><br>
+            <span class="number" style="font-size: 20px; margin-left: 15px;">{{x}}</span>
+        </div>
+    </div>
+    <div class="kotak">
+        <i class="uil uil-shield-check"></i>
+        <div>
+            <span class="text" style="font-size: 25px;">Allowed</span><br>
+            <span class="number" style="font-size: 20px;">{{z}}</span>
+        </div>
+    </div>
+    <div class="kotak">
+        <i class="uil uil-comments"></i>
+        <div>
+            <span class="text" style="font-size: 25px;">Blocked</span><br>
+            <span class="number"  style="font-size: 20px;">{{y}}</span>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+
+        <span class="mainlogo">
+    
+            <img src="{{ url_for('static', filename='img/phishtitanlogo.png') }}" alt="logo">
+        </span>
+        <div class="centerbox">
+            <h1> Analyse suspicious URLs to detect malware </h1>
+
+            <form method="POST" action="{{ url_for('error') }}">
+                <input type="text" class="form__input" name="url" id="url" placeholder="Search for a phishing URL" required="" style="display: inline-block;">
+                <button class="button" value="error" type="submit" name="error" style="display: inline-block; ">SCAN</button>
+
+                <h3>{{ prediction_label }}</h3>
+            
+                <p>{{ url }}</p>
+
+            </form>
+
+         
+            
+    </section>
+
+    <script src="static/js/script.js"></script>
+
+    <script>
+        function logout() {
+            // Create a new form element
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/logout'; // Specify the logout route in Flask
+        
+            // Create a hidden input field to mimic the behavior of a form submission
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'logout'; // Specify the name of the POST parameter
+            input.value = 'true'; // Specify the value of the POST parameter
+            form.appendChild(input);
+        
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+        </script>
+
+<script>
+    // Array of placeholder texts
+    var placeholders = ["Awareness", "Caution", "Security", "Vigilance", "Diligence"];
+    
+    // Function to rotate through placeholders
+    function rotatePlaceholders() {
+        var index = 0;
+        return function() {
+            document.getElementById("searchInput").setAttribute("placeholder", placeholders[index]);
+            index = (index + 1) % placeholders.length;
+        };
+    }
+    
+    // Rotate placeholders every 3 seconds
+    setInterval(rotatePlaceholders(), 3000);
+</script>
+
+
+</body>
+</html>
